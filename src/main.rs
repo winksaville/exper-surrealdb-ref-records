@@ -27,7 +27,7 @@ async fn main() -> Result<(), Box<dyn Error>> {
     let address = "123 Main St";
     let location_123_main_st_response = db
         .query(r#"CREATE ONLY $table SET address = $addr;"#)
-        .bind(("table", table)) // Err(Db(CreateStatement { value: "'location_tbl'"}))
+        .bind(("table", table))
         .bind(("address", address))
         .await?;
     dbg!(&location_123_main_st_response);
